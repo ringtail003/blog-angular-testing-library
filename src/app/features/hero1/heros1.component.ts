@@ -2,11 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Hero } from 'src/app/models/hero.model';
-import { Hero1Service } from 'src/app/features/heros1/hero1.service';
+import { Hero1Service } from 'src/app/features/hero1/hero1.service';
 
 @Component({
   standalone: true,
-  selector: 'app-heros',
+  selector: 'app-heros1',
   imports: [RouterModule, CommonModule],
   template: `
     <ul *ngFor="let hero of heros">

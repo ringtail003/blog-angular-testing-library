@@ -7,7 +7,7 @@ import { toObservable } from '@angular/core/rxjs-interop';
   providedIn: "root"
 })
 export class Hero1Service {
-  readonly heros = signal<Hero[]>([]);
+  private readonly heros = signal<Hero[]>([]);
 
   get heros$(): Observable<Hero[]> {
     return toObservable(this.heros);
@@ -18,27 +18,27 @@ export class Hero1Service {
       {
         id: 1, 
         name: "Dr. Nice",
-        registeredAt: new Date("2022-02-11T11:42:30+0900"),
       },
       {
         id: 2, 
         name: "Bombasto",
-        registeredAt: new Date("2022-03-08T15:11:30+0900"),
       },
       {
         id: 3, 
         name: "Celeritas",
-        registeredAt: new Date("2022-03-08T15:11:30+0900"),
       }
     ]);
   }
 
   add(newHeroName: string): void {
     this.heros.update((heros) => {
-      return heros.concat({ 
-        id: this.heros().length + 1,
-        name: newHeroName,
-      });
+      return [
+        ...heros,
+        { 
+          id: this.heros().length + 1,
+          name: newHeroName,
+        },
+      ]
     });
   }
 

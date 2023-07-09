@@ -7,7 +7,7 @@ import { Routes, provideRouter } from '@angular/router';
 const routes: Routes = [
   {
     path: 'users',
-    loadComponent: () => import("./app/features/heros1/heros1.component").then(module => module.Heros1Component)
+    loadComponent: () => import("./app/features/hero1/heros1.component").then(module => module.Heros1Component)
   }
 ];
 

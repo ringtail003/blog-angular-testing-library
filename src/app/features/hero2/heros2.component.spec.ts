@@ -1,18 +1,17 @@
-import { TestBed } from "@angular/core/testing";
-import { fireEvent, render, screen, waitFor } from "@testing-library/angular";
+import { fireEvent, render, screen } from "@testing-library/angular";
 import { BehaviorSubject } from "rxjs";
-import { Hero1Service } from "src/app/features/heros1/hero1.service";
-import { Heros1Component } from "src/app/features/heros1/heros1.component";
+import { Hero2Service } from "src/app/features/hero2/hero2.service";
+import { Heros2Component } from "src/app/features/hero2/heros2.component";
 import { Hero } from "src/app/models/hero.model";
 
-describe("components.Heros1Component", () => {
+describe("components.Heros2Component", () => {
   describe("ヒーローを追加し削除する", () => {
     beforeEach(async () => {
-      await render(`<app-heros></app-heros>`, {
-        imports: [Heros1Component],
+      await render(`<app-heros2></app-heros2>`, {
+        imports: [Heros2Component],
         providers: [
           {
-            provide: Hero1Service,
+            provide: Hero2Service,
             useClass: MockService,
           }
         ]
