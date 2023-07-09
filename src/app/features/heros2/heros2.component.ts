@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { Hero } from 'src/app/models/hero.model';
-import { Hero2Service } from 'src/app/features/hero2/hero2.service';
+import { Hero2Service } from 'src/app/features/heros2/heros2.service';
 
 @Component({
   standalone: true,
@@ -15,9 +15,7 @@ import { Hero2Service } from 'src/app/features/hero2/hero2.service';
       </li>
     </ul>
 
-    <label>
-      <input type="text" placeholder="ヒーローの名前" #newHeroName>
-    </label>
+    <input type="text" placeholder="ヒーローの名前" #newHeroName>
     <button (click)="add(newHeroName.value)">追加</button>
   `
 })

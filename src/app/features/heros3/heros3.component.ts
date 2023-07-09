@@ -1,30 +1,27 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { Hero } from 'src/app/models/hero.model';
-import { Hero3ItemComponent } from 'src/app/features/hero3/hero3-item.component';
-import { Hero3ApiService } from 'src/app/features/hero3/hero3-api.service';
+import { Heros3ItemComponent } from 'src/app/features/heros3/heros3-item.component';
+import { Heros3Service } from 'src/app/features/heros3/heros3.service';
 
 @Component({
   standalone: true,
   selector: 'app-heros3',
   imports: [
     CommonModule,
-    Hero3ItemComponent,
+    Heros3ItemComponent,
   ],
   template: `
     <ul *ngFor="let hero of heros">
-      <app-hero3-item [hero]="hero" (remove)="onRemove($event)"></app-hero3-item>
+      <app-heros3-item [hero]="hero" (remove)="onRemove($event)"></app-heros3-item>
     </ul>
 
-    <label>
-      <input type="text" placeholder="ヒーローの名前" #newHeroName>
-    </label>
-
+    <input type="text" placeholder="ヒーローの名前" #newHeroName>
     <button (click)="add(newHeroName.value)">追加</button>
   `
 })
 export class Heros3Component implements OnInit {
-  private readonly api = inject(Hero3ApiService);
+  private readonly api = inject(Heros3Service);
   heros: Hero[] = [];
 
   ngOnInit(): void {

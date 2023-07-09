@@ -5,7 +5,7 @@ import { Hero } from "src/app/models/hero.model";
 @Injectable({
   providedIn: "root"
 })
-export class Hero3ApiService {
+export class Heros3Service {
   fetch(): Observable<Hero[]> {
     return of([
       {

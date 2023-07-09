@@ -1,17 +1,17 @@
-import { fireEvent, render, screen } from "@testing-library/angular";
-import { BehaviorSubject } from "rxjs";
-import { Hero2Service } from "src/app/features/hero2/hero2.service";
-import { Heros2Component } from "src/app/features/hero2/heros2.component";
+import { fireEvent, render, screen, waitFor } from "@testing-library/angular";
+import { Observable, of } from "rxjs";
+import { Heros3Service } from "src/app/features/heros3/heros3.service";
+import { Heros3Component } from "src/app/features/heros3/heros3.component";
 import { Hero } from "src/app/models/hero.model";
 
-describe("components.Heros2Component", () => {
+describe("components.Heros3Component", () => {
   describe("ヒーローを追加し削除する", () => {
     beforeEach(async () => {
-      await render(`<app-heros2></app-heros2>`, {
-        imports: [Heros2Component],
+      await render(`<app-heros3></app-heros3>`, {
+        imports: [Heros3Component],
         providers: [
           {
-            provide: Hero2Service,
+            provide: Heros3Service,
             useClass: MockService,
           }
         ]
@@ -37,22 +37,17 @@ describe("components.Heros2Component", () => {
 });
 
 class MockService {
-  heros$ = new BehaviorSubject<Hero[]>([]);
-
-  fetch(): void {
-    this.heros$.next([
+  fetch(): Observable<Hero[]> {
+    return of([
       { id: 1, name: "Hero1" },
     ]);
   }
 
-  add(name: string): void {
-    this.heros$.next([
-      { id: 1, name: "Hero1" },
-      { id: 2, name },
-    ]);
+  add(name: string): Observable<Hero> {
+    return of({ id: 2, name });
   }
 
-  remove(): void {
-    this.heros$.next([]);
+  remove(): Observable<null> {
+    return of(null);
   }
 }

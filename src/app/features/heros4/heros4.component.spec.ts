@@ -1,17 +1,17 @@
 import { fireEvent, render, screen } from "@testing-library/angular";
 import { BehaviorSubject } from "rxjs";
-import { Hero1Service } from "src/app/features/hero1/hero1.service";
-import { Heros1Component } from "src/app/features/hero1/heros1.component";
+import { Hero4Service } from "src/app/features/heros4/heros4.service";
+import { Heros4Component } from "src/app/features/heros4/heros4.component";
 import { Hero } from "src/app/models/hero.model";
 
-describe("components.Heros1Component", () => {
+describe("components.Heros4Component", () => {
   describe("ヒーローを追加し削除する", () => {
     beforeEach(async () => {
-      await render(`<app-heros1></app-heros1>`, {
-        imports: [Heros1Component],
+      await render(`<app-heros4></app-heros4>`, {
+        imports: [Heros4Component],
         providers: [
           {
-            provide: Hero1Service,
+            provide: Hero4Service,
             useClass: MockService,
           }
         ]
