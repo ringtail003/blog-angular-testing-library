@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { Hero } from 'src/app/features/heros1/heros.model';
-import { HeroService } from 'src/app/features/heros1/heros.service';
+import { Hero } from 'src/app/models/hero.model';
+import { Hero1Service } from 'src/app/features/heros1/hero1.service';
 
 @Component({
   standalone: true,
@@ -12,7 +12,6 @@ import { HeroService } from 'src/app/features/heros1/heros.service';
     <ul *ngFor="let hero of heros">
       <li>
         <span>{{ hero.name }}</span>
-        <time>{{ hero.registeredAt | date:"MM/dd HH:mm" }}</time>
         <button (click)="remove(hero)">削除</button>
       </li>
     </ul>
@@ -24,7 +23,7 @@ import { HeroService } from 'src/app/features/heros1/heros.service';
   `
 })
 export class Heros1Component implements OnInit {
-  private readonly service = inject(HeroService);
+  private readonly service = inject(Hero1Service);
   heros: Hero[] = [];
 
   constructor() {

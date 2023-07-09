@@ -1,12 +1,12 @@
 import { Injectable, signal } from "@angular/core";
 import { Observable } from "rxjs";
-import { Hero } from "src/app/features/heros1/heros.model";
+import { Hero } from "src/app/models/hero.model";
 import { toObservable } from '@angular/core/rxjs-interop';
 
 @Injectable({
   providedIn: "root"
 })
-export class HeroService {
+export class Hero1Service {
   readonly heros = signal<Hero[]>([]);
 
   get heros$(): Observable<Hero[]> {
@@ -38,7 +38,6 @@ export class HeroService {
       return heros.concat({ 
         id: this.heros().length + 1,
         name: newHeroName,
-        registeredAt: new Date()
       });
     });
   }
