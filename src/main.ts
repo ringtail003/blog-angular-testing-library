@@ -6,8 +6,8 @@ import { Routes, provideRouter } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '/users',
-    component: () => import('./featres/users/users.component.ts').then(module => module.UsersComponent)
+    path: 'users',
+    loadComponent: () => import("./app/features/heros1/heros.component").then(module => module.Heros1Component)
   }
 ];
 
