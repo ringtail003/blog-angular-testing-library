@@ -16,11 +16,11 @@ describe("components.Heros2Component", () => {
       ]
     });
 
-    expect(screen.getByText("Hero1"));
+    expect(screen.getByText("Hero1")).toBeTruthy();
 
     fireEvent.input(screen.getByPlaceholderText("ヒーローの名前"), { target: { value: "New Hero" } })
     fireEvent.click(screen.getByRole("button", { name: "追加" }));
-    expect(screen.getByText("New Hero"));
+    expect(screen.getByText("New Hero")).toBeTruthy();
 
     fireEvent.click(screen.getAllByRole("button", { name: "削除" })[0]);
     expect(screen.queryByText("Hero1")).toBeNull();
