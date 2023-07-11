@@ -14,10 +14,9 @@ import { Hero } from 'src/app/models/hero.model';
   template: `
     <table>
       <tbody>
-        <tr>
+        <tr *ngFor="let hero of heros">
           <td>
             <app-heros3-item 
-              *ngFor="let hero of heros" 
               [hero]="hero"
               (remove)="removeHero(hero)"
             ></app-heros3-item>
