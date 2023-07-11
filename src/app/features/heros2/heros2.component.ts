@@ -11,12 +11,12 @@ import { Hero } from 'src/app/models/hero.model';
     <ul *ngFor="let hero of heros">
       <li>
         <span>{{ hero.name }}</span>
-        <button (click)="onRemove(hero)">削除</button>
+        <button (click)="removeHero(hero)">削除</button>
       </li>
     </ul>
 
     <input type="text" placeholder="ヒーローの名前" #newHeroName>
-    <button (click)="add(newHeroName.value)">追加</button>
+    <button (click)="addHero(newHeroName.value)">追加</button>
   `
 })
 export class Heros2Component implements OnInit {
@@ -27,7 +27,7 @@ export class Heros2Component implements OnInit {
     this.service.fetch().subscribe(heros => this.heros = heros);
   }
 
-  add(newHeroName: string): void {
+  addHero(newHeroName: string): void {
     this.service.add(newHeroName).subscribe((hero) => {
       this.heros = [
         ...this.heros,
@@ -36,7 +36,7 @@ export class Heros2Component implements OnInit {
     });
   }
 
-  onRemove(hero: Hero): void {
+  removeHero(hero: Hero): void {
     this.service.remove(hero).subscribe(() => {
       this.heros = this.heros.filter(v => v.id !== hero.id);
     });
