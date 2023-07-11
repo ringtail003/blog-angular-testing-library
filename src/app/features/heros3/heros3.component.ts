@@ -41,10 +41,10 @@ export class Heros3Component implements OnInit {
   }
 
   add(newHeroName: string): void {
-    this.service.add(newHeroName).subscribe((createdHero) => {
+    this.service.add(newHeroName).subscribe((hero) => {
       this.heros = [
         ...this.heros,
-        createdHero,
+        hero,
       ];
     });
   }
