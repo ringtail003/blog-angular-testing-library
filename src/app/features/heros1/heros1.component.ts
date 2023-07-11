@@ -23,11 +23,8 @@ export class Heros1Component implements OnInit {
   private readonly service = inject(Heros1Service);
   heros: Hero[] = [];
 
-  constructor() {
-    this.service.heros$.subscribe(heros => this.heros = heros);
-  }
-
   ngOnInit(): void {
+    this.service.heros$.subscribe(heros => this.heros = heros);
     this.service.fetch();
   }
 
