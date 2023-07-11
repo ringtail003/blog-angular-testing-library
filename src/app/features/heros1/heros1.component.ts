@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
+import { Heros1Service } from 'src/app/features/heros1/heros1.service';
 import { Hero } from 'src/app/models/hero.model';
-import { Hero1Service } from 'src/app/features/heros1/heros1.service';
 
 @Component({
   standalone: true,
@@ -20,7 +20,7 @@ import { Hero1Service } from 'src/app/features/heros1/heros1.service';
   `
 })
 export class Heros1Component implements OnInit {
-  private readonly service = inject(Hero1Service);
+  private readonly service = inject(Heros1Service);
   heros: Hero[] = [];
 
   constructor() {

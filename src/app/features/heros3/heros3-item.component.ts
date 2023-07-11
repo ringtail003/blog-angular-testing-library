@@ -6,13 +6,12 @@ import { Hero } from 'src/app/models/hero.model';
   selector: 'app-heros3-item',
   imports: [],
   template: `
-    <li>
-      <span>{{ hero.name }}</span>
-      <button (click)="remove.emit(hero)">削除</button>
-    </li>
+    <span>{{ hero.name }}</span>
+    <button (click)="remove.emit(hero)">削除</button>
   `
 })
 export class Heros3ItemComponent {
   @Input({ required: true }) hero!: Hero;
   @Output() remove = new EventEmitter<Hero>();
 }
+

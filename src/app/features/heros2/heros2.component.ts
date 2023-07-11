@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
+import { Heros2Service } from 'src/app/features/heros2/heros2.service';
 import { Hero } from 'src/app/models/hero.model';
-import { Hero2Service } from 'src/app/features/heros2/heros2.service';
 
 @Component({
   standalone: true,
@@ -11,7 +11,7 @@ import { Hero2Service } from 'src/app/features/heros2/heros2.service';
     <ul *ngFor="let hero of heros">
       <li>
         <span>{{ hero.name }}</span>
-        <button (click)="remove(hero)">削除</button>
+        <button (click)="onRemove(hero)">削除</button>
       </li>
     </ul>
 
@@ -20,22 +20,25 @@ import { Hero2Service } from 'src/app/features/heros2/heros2.service';
   `
 })
 export class Heros2Component implements OnInit {
-  private readonly service = inject(Hero2Service);
+  private readonly service = inject(Heros2Service);
   heros: Hero[] = [];
 
-  constructor() {
-    this.service.heros$.subscribe(heros => this.heros = heros);
-  }
-
   ngOnInit(): void {
-    this.service.fetch();
+    this.service.fetch().subscribe(heros => this.heros = heros);
   }
 
   add(newHeroName: string): void {
-    this.service.add(newHeroName);
+    this.service.add(newHeroName).subscribe((hero) => {
+      this.heros = [
+        ...this.heros,
+        hero,
+      ];
+    });
   }
 
-  remove(hero: Hero): void {
-    this.service.remove(hero);
+  onRemove(hero: Hero): void {
+    this.service.remove(hero).subscribe(() => {
+      this.heros = this.heros.filter(v => v.id !== hero.id);
+    });
   }
 }

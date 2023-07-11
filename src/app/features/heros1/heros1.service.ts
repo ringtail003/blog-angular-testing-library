@@ -1,12 +1,12 @@
 import { Injectable, signal } from "@angular/core";
+import { toObservable } from '@angular/core/rxjs-interop';
 import { Observable } from "rxjs";
 import { Hero } from "src/app/models/hero.model";
-import { toObservable } from '@angular/core/rxjs-interop';
 
 @Injectable({
   providedIn: "root"
 })
-export class Hero1Service {
+export class Heros1Service {
   private readonly heros = signal<Hero[]>([]);
 
   get heros$(): Observable<Hero[]> {

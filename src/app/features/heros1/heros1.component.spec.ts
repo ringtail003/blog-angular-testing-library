@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/angular";
 import { BehaviorSubject } from "rxjs";
-import { Hero1Service } from "src/app/features/heros1/heros1.service";
 import { Heros1Component } from "src/app/features/heros1/heros1.component";
+import { Heros1Service } from "src/app/features/heros1/heros1.service";
 import { Hero } from "src/app/models/hero.model";
 
 describe("components.Heros1Component", () => {
@@ -10,7 +10,7 @@ describe("components.Heros1Component", () => {
       imports: [Heros1Component],
       providers: [
         {
-          provide: Hero1Service,
+          provide: Heros1Service,
           useClass: MockService,
         }
       ]

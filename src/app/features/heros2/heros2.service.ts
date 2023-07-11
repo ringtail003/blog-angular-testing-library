@@ -1,15 +1,13 @@
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable } from "rxjs";
+import { Observable, of } from "rxjs";
 import { Hero } from "src/app/models/hero.model";
 
 @Injectable({
   providedIn: "root"
 })
-export class Hero2Service {
-  readonly heros$ = new BehaviorSubject<Hero[]>([]);
-
-  fetch(): void {
-    this.heros$.next([
+export class Heros2Service {
+  fetch(): Observable<Hero[]> {
+    return of([
       {
         id: 1, 
         name: "Dr. Nice",
@@ -25,17 +23,14 @@ export class Hero2Service {
     ]);
   }
 
-  add(newHeroName: string): void {
-    this.heros$.next([
-      ...this.heros$.value,
-      { 
-        id: this.heros$.value.length + 1,
-        name: newHeroName,
-      }, 
-    ]);
+  add(name: string): Observable<Hero> {
+    return of({
+      id: 100,
+      name
+    });
   }
 
-  remove(hero: Hero): void {
-    this.heros$.next(this.heros$.value.filter(v => v.id !== hero.id));
+  remove(hero: Hero): Observable<void> {
+    return of();
   }
 }

@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
-import { Hero } from 'src/app/models/hero.model';
 import { Heros3ItemComponent } from 'src/app/features/heros3/heros3-item.component';
 import { Heros3Service } from 'src/app/features/heros3/heros3.service';
+import { Hero } from 'src/app/models/hero.model';
 
 @Component({
   standalone: true,
@@ -12,9 +12,19 @@ import { Heros3Service } from 'src/app/features/heros3/heros3.service';
     Heros3ItemComponent,
   ],
   template: `
-    <ul *ngFor="let hero of heros">
-      <app-heros3-item [hero]="hero" (remove)="onRemove($event)"></app-heros3-item>
-    </ul>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <app-heros3-item 
+              *ngFor="let hero of heros" 
+              [hero]="hero"
+              (remove)="onRemove(hero)"
+            ></app-heros3-item>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
     <input type="text" placeholder="ヒーローの名前" #newHeroName>
     <button (click)="add(newHeroName.value)">追加</button>
