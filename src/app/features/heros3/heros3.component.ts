@@ -31,17 +31,17 @@ import { Hero } from 'src/app/models/hero.model';
   `
 })
 export class Heros3Component implements OnInit {
-  private readonly api = inject(Heros3Service);
+  private readonly service = inject(Heros3Service);
   heros: Hero[] = [];
 
   ngOnInit(): void {
-    this.api.fetch().subscribe((heros) => {
+    this.service.fetch().subscribe((heros) => {
       this.heros = heros;
     });
   }
 
   add(newHeroName: string): void {
-    this.api.add(newHeroName).subscribe((createdHero) => {
+    this.service.add(newHeroName).subscribe((createdHero) => {
       this.heros = [
         ...this.heros,
         createdHero,
@@ -50,7 +50,7 @@ export class Heros3Component implements OnInit {
   }
 
   onRemove(hero: Hero): void {
-    this.api.remove(hero).subscribe(() => {
+    this.service.remove(hero).subscribe(() => {
       this.heros = this.heros.filter(v => v.id !== hero.id);
     });
   }

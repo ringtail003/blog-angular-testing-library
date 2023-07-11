@@ -31,6 +31,6 @@ export class Heros2Service {
   }
 
   remove(hero: Hero): Observable<void> {
-    return of();
+    return of(void 0);
   }
 }
